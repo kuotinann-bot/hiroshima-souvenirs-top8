@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>廣島精選 8 大必買伴手禮導覽 | Hiroshima Souvenirs Top 8</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f6f2;
+      --card-bg: #ffffff;
+      --primary: #c23a2b;
+      --primary-hover: #9c271b;
+      --text-main: #2b2b2b;
+      --text-muted: #6a6a6a;
+      --border-color: #e5e0d8;
+      --accent: #2e604a;
+      --tag-bg: #f0ebe1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 50px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1f2d3d 0%, #34495e 100%);
+      color: #fff;
+      padding: 48px 20px 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    header p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 32px auto 0;
+      padding: 0 16px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      color: var(--text-muted);
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .card-img-wrapper {
+      width: 100%;
+      height: 200px;
+      background: #eae5de;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.03);
+    }
+
+    .badge-index {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(194, 58, 43, 0.9);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title-group {
+      margin-bottom: 10px;
+    }
+
+    .brand-name {
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      font-size: 0.72rem;
+      color: #555;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      flex-grow: 1;
+      text-align: justify;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid #f0ede8;
+    }
+
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 8px 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-web {
+      background: #f1f5f9;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-web:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-map {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-map:hover {
+      background: #234838;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 32px 16px 24px;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>廣島特色伴手禮精選 8 選</h1>
+    <p>嚴選瀨戶內海與廣島風土名產・奶油麵包、柑橘大福、地酒與工藝良品</p>
+  </header>
+
+  <div class="container">
+    <div class="toolbar">
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterItems('all')">全部展示 (8)</button>
+        <button class="filter-btn" onclick="filterItems('甜點菓子')">甜點菓子 (4)</button>
+        <button class="filter-btn" onclick="filterItems('酒造風味')">地酒調味 (2)</button>
+        <button class="filter-btn" onclick="filterItems('藝文工藝')">藝術工藝 (2)</button>
+      </div>
+    </div>
+
+    <div class="grid" id="souvenir-grid"></div>
+
+    <footer>
+      <p>資料整理自 Harper's BAZAAR Taiwan 報導・Hiroshima Specialty Souvenirs List</p>
+    </footer>
+  </div>
+
+  <script>
+    const items = [
+      {
+        id: 1,
+        category: "甜點菓子",
+        brand: "八天堂 (Hattendo)",
+        title: "八天堂 くりーむパン (奶油麵包)",
+        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80",
+        desc: "廣島三原市發跡的經典！嚴選純鮮奶油與特製卡士達，麵包體如海綿蛋糕般細緻，冷藏後依然綿密柔滑不乾柴。",
+        website: "https://hattendo.jp/",
+        map: "https://maps.google.com/?q=八天堂+港町創業店+三原市"
+      },
+      {
+        id: 2,
+        category: "甜點菓子",
+        brand: "にしき堂 (Nishikido)",
+        title: "Nishiki堂 紅葉饅頭 (もみじ饅頭)",
+        image: "https://images.unsplash.com/photo-1589119908995-c6837fa14d48?auto=format&fit=crop&w=700&q=80",
+        desc: "廣島最具代表性的楓葉造型甜點。綿密清爽的紅豆沙餡裹上柔軟蛋糕體，除了經典豆沙，還有生もみじ與起司巧克力等創新口味。",
+        website: "https://nisikido.co.jp/",
+        map: "https://maps.google.com/?q=にしき堂+本店+広島市東区光町"
+      },
+      {
+        id: 3,
+        category: "甜點菓子",
+        brand: "はっさく屋 (Hassaku-ya)",
+        title: "元祖 八朔橘大福 (はっさく大福)",
+        image: "https://images.unsplash.com/photo-1582293041079-7814c2f12063?auto=format&fit=crop&w=700&q=80",
+        desc: "發源於因島的人氣逸品！將多汁甘苦的鮮採八朔柑橘肉，與香甜細緻的白豆沙包裹在柑橘果皮製成的麻糬內，層次分明爽口。",
+        website: "https://0845.boo.jp/hassaku/",
+        map: "https://maps.google.com/?q=はっさく屋+尾道市因島大浜町"
+      },
+      {
+        id: 4,
+        category: "甜點菓子",
+        brand: "島ごころ (Shimagocoro)",
+        title: "瀬戶田檸檬蛋糕 (瀬戸田レモンケーキ)",
+        image: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=700&q=80",
+        desc: "銷售突破數百萬個的瀨戶田必買名產。堅持手工切製無農藥殘留的檸檬皮釀成果醬揉入麵糰，帶出陽光般清新香氣與扎實口感。",
+        website: "https://www.patisserie-okumoto.com/",
+        map: "https://maps.google.com/?q=島ごころSETODA+尾道市瀬戸田町"
+      },
+      {
+        id: 5,
+        category: "酒造風味",
+        brand: "蓬萊鶴 / 賀茂鶴",
+        title: "廣島地酒（蓬萊鶴・賀茂鶴清酒）",
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=700&q=80",
+        desc: "日本三大酒鄉之一。創立於1805年廣島市的「蓬萊鶴」爽冽醇郁；西條名廠「賀茂鶴」則以香氣細膩的高規格大吟釀名揚國際。",
+        website: "https://www.kamotsuru.jp/",
+        map: "https://maps.google.com/?q=賀茂鶴酒造+見学室+東広島市西条"
+      },
+      {
+        id: 6,
+        category: "酒造風味",
+        brand: "安芸の島の実 (江田島)",
+        title: "江田島特級初榨橄欖油",
+        image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=80",
+        desc: "榮獲國際金獎的世界級日本橄欖油。100%選用瀨戶內江田島手摘橄欖當日鮮榨，保留濃醇果香與溫潤喉韻，兼具質感與天然品味。",
+        website: "https://shop.hiroshima-olive.jp/",
+        map: "https://maps.google.com/?q=江田島オリーブファクトリー"
+      },
+      {
+        id: 7,
+        category: "藝文工藝",
+        brand: "下瀬美術館 (Simose Art Museum)",
+        title: "SIMOSE 原創設計與文創商品",
+        image: "https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&w=700&q=80",
+        desc: "坂茂大師操刀、獲選全球最美美術館之一。館內商店獨家販售以水上彩盒「可動展廳」為靈感的文具、加萊玻璃工藝複製品及紙管原創設計品。",
+        website: "https://simose-museum.jp/",
+        map: "https://maps.google.com/?q=下瀬美術館+広島県大竹市晴海"
+      },
+      {
+        id: 8,
+        category: "藝文工藝",
+        brand: "Precious one",
+        title: "廣島天然冷製精油手工皂",
+        image: "https://images.unsplash.com/photo-1607006314594-55030e42702a?auto=format&fit=crop&w=700&q=80",
+        desc: "使用天然植物油與嚴選純精油製成，低溫「冷製法」完整保留滋潤養分與淡雅香氣。洗後滋潤溫和不乾澀，還有結合在地特色的精緻造形皂。",
+        website: "https://precious-one99.info/",
+        map: "https://maps.google.com/?q=Precious+one+広島"
+      }
+    ];
+
+    function renderCards(list) {
+      const container = document.getElementById('souvenir-grid');
+      container.innerHTML = list.map(item => `
+        <div class="card" data-category="${item.category}">
+          <div class="card-img-wrapper">
+            <span class="badge-index">No. 0${item.id}</span>
+            <img class="card-img" 
+                 src="${item.image}" 
+                 alt="${item.title}" 
+                 loading="lazy" 
+                 onerror="this.src='https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=700&q=80'">
+          </div>
+          <div class="card-body">
+            <div class="card-title-group">
+              <span class="brand-name">${item.brand}</span>
+              <h3 class="card-title">${item.title}</h3>
+            </div>
+            <div class="card-tags">
+              <span class="tag">${item.category}</span>
+              <span class="tag">廣島限定</span>
+            </div>
+            <p class="card-desc">${item.desc}</p>
+            <div class="card-actions">
+              <a href="${item.website}" target="_blank" rel="noopener noreferrer" class="btn btn-web">
+                官網連結 ↗
+              </a>
+              <a href="${item.map}" target="_blank" rel="noopener noreferrer" class="btn btn-map">
+                地圖定位 📍
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterItems(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      if (category === 'all') {
+        renderCards(items);
+      } else {
+        renderCards(items.filter(i => i.category === category));
+      }
+    }
+
+    // 初始化載入全部
+    renderCards(items);
+  </script>
+</body>
+</html>
